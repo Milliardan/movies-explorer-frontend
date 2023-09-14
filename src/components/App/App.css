@@ -1,0 +1,137 @@
+/* Файл normalize.css */
+@import url(../../vendor/normalize.css);
+
+/* Шрифт Inter*/
+@import url(../../vendor/fonts/inter-web/inter.css);
+
+html {
+  /* Плавная прокрутка */
+  scroll-behavior: smooth;
+}
+
+/* Общий стиль для приложения */
+.page {
+  /* Сглаживание */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  /* Шрифт для всей страницы */
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  /* Цветовая схема */
+  --surface: #202020;
+  --on-surface: #DADADA;
+  --on-surface-variant: #DADADA;
+  --on-surface-variant-secondary: #424242;
+  --promo: #073042;
+  --promo-variant: #6b7dff;
+  --on-promo: #fff;
+  --background: #272727;
+  --on-background: #000;
+  --on-background-variant: #303030;
+  --background-variant: #202020;
+  --background-variant-secondary: #303030;
+  --border-search: #AAAAAA;
+  --line-portfolio: #E6E6E6;
+  --primary: #3DDC84;
+  --on-primary: #000;
+  --secondary: #4285F4;
+  --on-secondary: #fff;
+  --footer: #202020;
+  --on-footer: #8B8B8B;
+  --account-button: #302c2c;
+  --checkbox-disabled: #ebebeb;
+  --checkbox-enabled: var(--primary);
+  --on-checkbox-disabled: #f5f5f5;
+  --on-checkbox-enabled: #fff;
+  --card: #222222;
+  --on-card: #FFFFFF;
+  --on-card-variant: #8B8B8B;
+  --movie-button: #2F2F2F;
+  --on-movie-button: #FFFFFF;
+  --movie-button-done: #ee3465;
+  --on-movie-button-done: #fff;
+  --edit-button: #fff;
+  --error: #ee3465;
+  --button-disabled: #f8f8f8;
+  --on-button-disabled: #c2c2c2;
+  --auth-input: #424242;
+  /* Цвета страницы по умолчанию */
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
+/* Фокус интерактивных элементов по умолчанию */
+a:focus,
+button:focus,
+input:focus {
+  outline-offset: 5px;
+  outline-color: var(--primary);
+}
+
+/* Родительский элемент всех компонентов */
+.content {
+  width: 100%;
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content__footer {
+  margin-top: auto; /* Футер всегда внизу страницы */
+  padding-top: 73px;
+}
+
+@media (min-width: 768px) {
+  .content__footer {
+    padding-top: 60px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .content__footer {
+    padding-top: 73px;
+  }
+}
+
+.content__stretched-element {
+  flex-grow: 1; /* Растягивает нужный элемент на всю высоту окна */
+}
+
+/* Боковые поля на странице для всех экранов */
+.section {
+  padding-inline: 18px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-inline: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    padding-inline: 70px;
+  }
+}
+
+.section__common {
+  padding-inline: 14px;
+}
+
+@media (min-width: 768px) {
+  .section__common {
+    padding-inline: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section__common {
+    padding-inline: 70px;
+  }
+}
