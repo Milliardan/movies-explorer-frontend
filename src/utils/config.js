@@ -30,7 +30,7 @@ export const MOVIE_API = {
 };
 
 export const MAIN_API = {
-  BASE_URL: 'https://api.movies.milliardan.nomoredomainsicu.ru',
+  BASE_URL: 'http://localhost:3003',
   AUTH_HEADERS: {
     'Content-Type': 'application/json',
     Authorization: 'jwt token here',
