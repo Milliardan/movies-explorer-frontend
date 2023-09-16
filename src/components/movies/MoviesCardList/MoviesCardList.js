@@ -47,19 +47,27 @@ function MoviesCardList({
         aria-label="Список фильмов"
         ref={grid}
       >
-        {renderedMovies.map((movie) => {
-          return (
-            <MoviesCard
-              movie={movie}
-              key={movie.movieId}
-              isSaved={checkIsMovieSaved(movie)}
-              onClick={onCardClick}
-              isSavedMovieCard={isSavedMoviesCardList}
-            />
-          );
-        })}
+        {isSavedMoviesCardList
+          ? savedMovies.map((movie) => (
+              <MoviesCard
+                movie={movie}
+                key={movie.movieId}
+                isSaved={true}
+                onClick={onCardClick}
+                isSavedMovieCard={isSavedMoviesCardList}
+              />
+            ))
+          : renderedMovies.map((movie) => (
+              <MoviesCard
+                movie={movie}
+                key={movie.movieId}
+                isSaved={checkIsMovieSaved(movie)}
+                onClick={onCardClick}
+                isSavedMovieCard={isSavedMoviesCardList}
+              />
+            ))}
       </ul>
-      {renderedMovies.length < movies.length && (
+      {!isSavedMoviesCardList && renderedMovies.length < movies.length && (
         <More onClick={handleMoreClick} />
       )}
     </>

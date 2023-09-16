@@ -96,6 +96,25 @@
   }
 }
 
+.search-form__error {
+  grid-area: error;
+  justify-self: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.64;
+  color: var(--error);
+  min-height: 1.64em;
+}
+
+@media (min-width: 768px) {
+  .search-form__error {
+    justify-self: start;
+    font-size: 13px;
+    line-height: 1.38;
+  }
+}
+
 .search-form__button {
   /* Расположение */
   grid-area: button;
