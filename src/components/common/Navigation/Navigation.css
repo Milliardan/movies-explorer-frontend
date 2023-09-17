@@ -281,8 +281,9 @@
     line-height: 1.14;
   }
 
-  .navigation_themed .navigation__link_type_account {
-    background-color: var(--promo-variant);
+  .navigation_themed .navigation__link_type_account::after {
+    content: url('../../../images/icon__profile-auth.svg');
+    background: #F5F5F5;
   }
 }
 

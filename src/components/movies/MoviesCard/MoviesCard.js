@@ -1,57 +1,45 @@
 import './MoviesCard.css';
-import CardButton from '../CardButton/CardButton';
+
 import React from 'react';
+import GeneralCardButton from '../GeneralCardButton/GeneralCardButton';
+import SavedCardButton from '../SavedCardButton/SavedCardButton';
+import formatMovieDuration from '../../../utils/formatMovieDuration';
 
-// Функция для форматирования длительности фильма
-const formatDuration = (duration) => {
-  const hours = Math.floor(duration / 60);
-  const minutes = duration % 60;
-  return `${hours}ч ${minutes}м`;
-};
+function MoviesCard({ movie, isSaved, onClick, isSavedMovieCard = false }) {
+  const [isLoading, setIsLoading] = React.useState(false);
 
-function MoviesCard({ name, duration, thumbnail, type }) {
-  const [isSaved, setIsSaved] = React.useState(false);
-
-  function handleClickSave() {
-    setIsSaved((state) => !state);
-  }
-
-  const ref = React.useRef();
-
-  function handleClickDelete() {
-    setIsSaved(false);
-    ref.current.remove();
+  async function handleClick() {
+    setIsLoading(true);
+    await onClick(movie);
+    setIsLoading(false);
   }
 
   return (
-    <li className="movie-card" ref={ref}>
-      <h3 className="movie-card__name">{name}</h3>
-      <p className="movie-card__duration">{formatDuration(duration)}</p>
-      <img
-        src={thumbnail}
-        alt={`Кадр из фильма ${name}`}
-        className="movie-card__thumbnail"
-      />
+    <li className="movie-card">
+      <h3 className="movie-card__name">{movie.nameRU}</h3>
+      <p className="movie-card__duration">
+        {formatMovieDuration(movie.duration)}
+      </p>
+      <a
+        href={movie.trailerLink}
+        className="movie-card__link"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          src={movie.image}
+          alt={`Кадр из фильма ${movie.nameRU}`}
+          className="movie-card__thumbnail"
+        />
+      </a>
 
-      {type === 'all' ? (
-        isSaved ? (
-          <CardButton
-            className="movie-card__button"
-            type="done"
-            onClick={handleClickSave}
-          />
-        ) : (
-          <CardButton
-            className="movie-card__button"
-            type="save"
-            onClick={handleClickSave}
-          />
-        )
+      {isSavedMovieCard ? (
+        <SavedCardButton onClick={handleClick} disabled={isLoading} />
       ) : (
-        <CardButton
-          className="movie-card__button"
-          type="delete"
-          onClick={handleClickDelete}
+        <GeneralCardButton
+          isSaved={isSaved}
+          onClick={handleClick}
+          disabled={isLoading}
         />
       )}
     </li>
